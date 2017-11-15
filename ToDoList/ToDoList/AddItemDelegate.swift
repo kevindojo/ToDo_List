@@ -11,4 +11,7 @@ import UIKit
 protocol AddItemDelegate: class {
     
     func addItem(_ title: String, _ desc: String, _ date: Date, sender: UIViewController)
+    
+    func CancelButtonPressed (by controller: AddItemVC)
 }
+

@@ -93,7 +93,7 @@
                     <navigationItem key="navigationItem" id="cJ0-va-KAv">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="QCD-EE-l5e">
                             <connections>
-                                <segue destination="dgD-1R-62A" kind="presentation" identifier="AddItemSegue" id="sd5-Gy-MHG"/>
+                                <segue destination="BYO-sY-Taa" kind="presentation" identifier="AddItemSegue" id="sd5-Gy-MHG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -103,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="657" y="-421"/>
+            <point key="canvasLocation" x="458" y="-371"/>
         </scene>
         <!--Add ItemVC-->
         <scene sceneID="9tN-8P-Qx1">
@@ -114,13 +114,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2H5-mh-vku">
-                                <rect key="frame" x="16" y="20" width="343" height="30"/>
+                                <rect key="frame" x="16" y="64" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L2P-4v-yLj">
-                                <rect key="frame" x="16" y="58" width="343" height="128"/>
+                                <rect key="frame" x="16" y="102" width="343" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="enq-K7-97z"/>
@@ -135,13 +135,13 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uUa-KM-1Vw">
-                                <rect key="frame" x="0.0" y="252" width="375" height="216"/>
+                                <rect key="frame" x="0.0" y="296" width="375" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="532404069.90081102">
                                     <!--2017-11-15 02:01:09 +0000-->
                                 </date>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQl-UE-ENK">
-                                <rect key="frame" x="87" y="492" width="200" height="70"/>
+                                <rect key="frame" x="87" y="536" width="200" height="70"/>
                                 <color key="backgroundColor" red="0.13294907510000001" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="SXk-fk-Alj"/>
@@ -172,6 +172,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4GM-dJ-d2X"/>
                     </view>
+                    <navigationItem key="navigationItem" id="6AW-DW-ywv">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Llo-2e-PwA">
+                            <connections>
+                                <action selector="CancelButtonPressed:" destination="dgD-1R-62A" id="5tU-Wa-ByF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="date" destination="uUa-KM-1Vw" id="2k1-QG-H0I"/>
                         <outlet property="descArea" destination="L2P-4v-yLj" id="VrS-U4-MPO"/>
@@ -180,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1hg-FK-HnF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1391" y="99"/>
+            <point key="canvasLocation" x="1886" y="-152"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kCp-6s-qms">
@@ -198,7 +205,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFX-Uu-ir7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-60" y="99"/>
+            <point key="canvasLocation" x="-279" y="71"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CgM-Cg-W0t">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BYO-sY-Taa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="43F-th-cQ3">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dgD-1R-62A" kind="relationship" relationship="rootViewController" id="fZo-ko-dqN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5za-Kf-2ja" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1170" y="54"/>
         </scene>
     </scenes>
 </document>

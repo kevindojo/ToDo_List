@@ -43,9 +43,10 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddItemSegue" {
             
-            let dest = segue.destination as! AddItemVC
+            let dest = segue.destination as! UINavigationController
+            let AddItem = dest.topViewController as! AddItemVC
 
-            dest.delegate = self
+            AddItem.delegate = self
         }
     }
     //==== SEGUE ==== //
@@ -143,6 +144,10 @@ extension ViewController: AddItemDelegate {
         tableView.reloadData()
         sender.dismiss(animated: true, completion: nil)
         
+    }
+    
+    func CancelButtonPressed(by controller: AddItemVC) {
+        dismiss(animated: true, completion: nil)
     }
     
 }

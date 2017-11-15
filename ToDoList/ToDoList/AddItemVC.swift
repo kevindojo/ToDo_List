@@ -17,6 +17,10 @@ class AddItemVC: UIViewController {
     
     weak var delegate: AddItemDelegate?
     
+    @IBAction func CancelButtonPressed(_ sender: UIBarButtonItem) {
+        delegate?.CancelButtonPressed(by:self)
+        
+    }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
         
