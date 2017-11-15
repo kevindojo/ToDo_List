@@ -31,10 +31,15 @@ class AddItemVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //adds border to specified area
         let borderColor: UIColor = UIColor(displayP3Red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
         descArea.layer.borderWidth = 1.0
         descArea.layer.borderColor = borderColor.cgColor
         descArea.layer.cornerRadius = 5.0
+        
+        date.layer.borderWidth = 1.0
+        date.layer.borderColor = borderColor.cgColor
+        date.layer.cornerRadius = 5.0
     }
     
 } // end of class
