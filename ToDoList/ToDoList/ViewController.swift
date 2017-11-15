@@ -20,8 +20,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableData = getItems()
+        // access core data
+        
         tableView.reloadData()
+        //reload the "ToDoCell.swift(tableView)" file and its data
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,13 +35,22 @@ class ViewController: UIViewController {
     }
 
 
+    //==== SEGUE ==== // add button -> present modally to next view/table controller
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddItemSegue" {
+            
             let dest = segue.destination as! AddItemVC
+
             dest.delegate = self
         }
     }
+    //==== SEGUE ==== //
+    
+    
+    
+    
+    // ======== CORE DATA =============//
     
     func getItems() -> [ToDoItem] {
         do {
@@ -51,15 +65,22 @@ class ViewController: UIViewController {
         }
         return []
     }
+    
+    // ======== CORE DATA =============//
 }
 
 
+
+
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
+    //how many cells are we going to need?! -> always needed
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
-        
     }
     
+    //how should we create each cell?! -> always needed
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell") as! ToDoCell
@@ -69,7 +90,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let date = toDoItem.date!
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd,yyyy"
+        dateFormatter.dateFormat = "MM dd, yyyy"
         let dateStr = dateFormatter.string(from: date)
         
         cell.dateLabel.text = dateStr
@@ -83,10 +104,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    //modified the height of the custom cell
     func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
     
+    
+    //what do I do when I'm clicked?!
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableData[indexPath.row].complete {
             tableData[indexPath.row].complete = false
@@ -98,8 +122,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+
+
 extension ViewController: AddItemDelegate {
     
+    // add to the database!
     func addItem(_ title: String, _ desc: String, _ date: Date, sender: UIViewController){
     
         let item = NSEntityDescription.insertNewObject(forEntityName: "ToDoItem", into: managedObjectContext) as! ToDoItem
