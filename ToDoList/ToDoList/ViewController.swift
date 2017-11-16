@@ -117,7 +117,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let date = toDoItem.date!
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM dd, yyyy"
+        dateFormatter.dateFormat = "MM-dd-yyyy hh:mm"
         let dateStr = dateFormatter.string(from: date)
         
         cell.dateLabel.text = dateStr
