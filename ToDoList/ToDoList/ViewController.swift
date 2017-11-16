@@ -71,7 +71,9 @@ class ViewController: UIViewController {
     }
     
     // ======== CORE DATA =============//
-}
+    
+    
+} //end of class
 
 
 
@@ -79,12 +81,12 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     
-    //how many cells are we going to need?! -> always needed
+    //how many cells are we going to need?! -> ALWAYS needed ****
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
     }
     
-    //how should we create each cell?! -> always needed
+    //how should we create each cell?! -> ALWAYS needed *****
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell") as! ToDoCell
@@ -124,7 +126,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         delegate.saveContext()
         tableView.reloadData()
     }
-}
+    
+    
+} // end of extension
 
 
 
@@ -133,6 +137,7 @@ extension ViewController: AddItemDelegate {
     // add to the database!
     func addItem(_ title: String, _ desc: String, _ date: Date, sender: UIViewController){
     
+                        // calls database
         let item = NSEntityDescription.insertNewObject(forEntityName: "ToDoItem", into: managedObjectContext) as! ToDoItem
         item.title = title
         item.desc = desc
@@ -150,4 +155,19 @@ extension ViewController: AddItemDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-}
+    
+    // swipe to remove item
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let item = tableData[indexPath.row]
+        managedObjectContext.delete(item)
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print ("\(error)")
+        }
+        tableData.remove(at: indexPath.row)
+        tableView.reloadData()
+    }
+    
+} //end of extension

@@ -6,21 +6,20 @@
 //  Copyright © 2017 Kevin Pham. All rights reserved.
 //
 
+// STEP 1 after storyboard layout//
+
 import UIKit
 
 class AddItemVC: UIViewController {
     
-    
+    // 1a
     @IBOutlet weak var titleLabel: UITextField!
     @IBOutlet weak var descArea: UITextView!
     @IBOutlet weak var date: UIDatePicker!
     
     weak var delegate: AddItemDelegate?
     
-    @IBAction func CancelButtonPressed(_ sender: UIBarButtonItem) {
-        delegate?.CancelButtonPressed(by:self)
-        
-    }
+
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
         
@@ -33,6 +32,10 @@ class AddItemVC: UIViewController {
         }
     }
     
+    @IBAction func CancelButtonPressed(_ sender: UIBarButtonItem) {
+        delegate?.CancelButtonPressed(by:self)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         //adds border to specified area
