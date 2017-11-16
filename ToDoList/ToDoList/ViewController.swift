@@ -7,26 +7,39 @@
 //
 
 import UIKit
-import CoreData
-
+import CoreData // step 3
 
 class ViewController: UIViewController {
     
+    //3c
     var tableData: [ToDoItem] = []
-    @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var tableView: UITableView!
+    // ====== assign as "delegate" and "dataSource" ====== //
+            // drag Table View to viewController//
+    
+    
+    // 3a -> jump down to extension AddItemDelegate
     let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let delegate = (UIApplication.shared.delegate as! AppDelegate)
+    //3a
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //3c
         tableData = getItems()
         // access core data
         
+        //3d
         tableView.reloadData()
         //reload the "ToDoCell.swift(tableView)" file and its data
+        //======= exists only after making "@IBOutlet weak var tableView" connection =========//
         
+        // 3d ---> CREATE extension TableViewDelegate
         
         
         
@@ -40,6 +53,7 @@ class ViewController: UIViewController {
 
     //==== SEGUE ==== // add button -> present modally to next view/table controller
     
+    // step 5, set identifier in storyboard and CREATE FUNC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddItemSegue" {
             
@@ -48,7 +62,9 @@ class ViewController: UIViewController {
 
             AddItem.delegate = self
         }
-    }
+    }// step 5 -> jump to extension AddItemDelegate
+    
+    
     //==== SEGUE ==== //
     
     
@@ -56,9 +72,11 @@ class ViewController: UIViewController {
     
     // ======== CORE DATA =============//
     
+    //3c
     func getItems() -> [ToDoItem] {
         do {
             
+            // important line
             let itemRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"ToDoItem")
             
             let results = try managedObjectContext.fetch(itemRequest)
@@ -69,6 +87,7 @@ class ViewController: UIViewController {
         }
         return []
     }
+    //3c -> create var [], update viewDidLoad
     
     // ======== CORE DATA =============//
     
@@ -77,10 +96,10 @@ class ViewController: UIViewController {
 
 
 
-
+// step 4 CREATE extension
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
-    
+    // 4a
     //how many cells are we going to need?! -> ALWAYS needed ****
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
@@ -88,7 +107,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     //how should we create each cell?! -> ALWAYS needed *****
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    //4a -> CREATE prepare for FUNC SEGUE
         
+        // step 7
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell") as! ToDoCell
         let toDoItem = tableData[indexPath.row]
         
@@ -109,6 +130,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+
+    
     
     //modified the height of the custom cell
     func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -125,18 +148,22 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         delegate.saveContext()
         tableView.reloadData()
-    }
-    
+        
+    } // step 7 -> end.
     
 } // end of extension
 
 
 
+//3b
 extension ViewController: AddItemDelegate {
     
     // add to the database!
     func addItem(_ title: String, _ desc: String, _ date: Date, sender: UIViewController){
-    
+        
+//3b -> after jump to CORE DATA FUNC
+        
+        // 5b
                         // calls database
         let item = NSEntityDescription.insertNewObject(forEntityName: "ToDoItem", into: managedObjectContext) as! ToDoItem
         item.title = title
@@ -149,8 +176,14 @@ extension ViewController: AddItemDelegate {
         tableView.reloadData()
         sender.dismiss(animated: true, completion: nil)
         
-    }
+        //5b --> CREATE ToDoCell.swift file
+        }
     
+    
+    
+    
+    
+    // cancel and go back to tableView
     func CancelButtonPressed(by controller: AddItemVC) {
         dismiss(animated: true, completion: nil)
     }

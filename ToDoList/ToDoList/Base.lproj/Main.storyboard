@@ -141,7 +141,7 @@
                                 </date>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQl-UE-ENK">
-                                <rect key="frame" x="87" y="536" width="200" height="70"/>
+                                <rect key="frame" x="87.5" y="536" width="200" height="70"/>
                                 <color key="backgroundColor" red="0.13294907510000001" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="SXk-fk-Alj"/>

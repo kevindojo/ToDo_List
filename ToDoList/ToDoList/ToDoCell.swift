@@ -8,6 +8,8 @@
 
 import UIKit
 
+// step 6, make connections and assign the class
+// this is a prototype cell --> jump to extension tableViewDelegate in viewController
 
 class ToDoCell: UITableViewCell {
     
@@ -15,3 +17,5 @@ class ToDoCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
 }
+
+

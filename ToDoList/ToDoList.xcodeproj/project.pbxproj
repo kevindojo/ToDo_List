@@ -87,10 +87,10 @@
 			children = (
 				37EA276F1FBBD5C200D58AF7 /* AppDelegate.swift */,
 				37EA27731FBBD5C200D58AF7 /* Main.storyboard */,
-				37EA27711FBBD5C200D58AF7 /* ViewController.swift */,
 				37EA27921FBBD82000D58AF7 /* AddItemVC.swift */,
-				3747CB931FBBE3C600B6BE75 /* ToDoCell.swift */,
+				37EA27711FBBD5C200D58AF7 /* ViewController.swift */,
 				3747CB911FBBDBA100B6BE75 /* AddItemDelegate.swift */,
+				3747CB931FBBE3C600B6BE75 /* ToDoCell.swift */,
 				37EA27791FBBD5C200D58AF7 /* Assets.xcassets */,
 				37EA277B1FBBD5C200D58AF7 /* LaunchScreen.storyboard */,
 				37EA277E1FBBD5C200D58AF7 /* Info.plist */,
